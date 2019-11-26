@@ -1,0 +1,47 @@
+# The exclamation point means that the fields are non-nullable, which means that every field must return some data in each query. The only nullable field that we’re going to have in our User type will be age.
+type User {    
+    id: ID!    
+    name: String!    
+    email: String!    
+    age: Int    
+}
+
+# The users query will return an array of one or more Users. It will not return null, because we inserted the !, which means it’s a non-nullable query. It should always return something.
+type Query {    
+    users: [User!]!    
+    user(id: ID!): User! 
+}
+
+type Mutation {
+  # createUser: We should pass an ID, name, email, and age. It should return a new user.
+  createUser(id: ID!, name: String!, email: String!, age: Int): User!
+  # updateUser: We should pass an ID, and a new name, email, or age. It should return a new user.
+  updateUser(id: ID!, name: String, email: String, age: Int): User!
+  # deleteUser: We should pass an ID. It should return the deleted user.
+  deleteUser(id: ID!): User!
+}
+
+# In GraphQL, you will deal with three main concepts:
+
+  # Queries — the way you’re going to get data from the server.
+  # Queries in GraphQL are how you’re going to get data. One of the most beautiful things about queries in GraphQL is that you are just going to get the exact data that you want. No more, no less. This has a huge positive impact in our API — no more over-fetching or under-fetching information as we had with REST APIs.
+  # Mutations — In GraphQL, mutations are the way you’re going to modify data on the server and get updated data back. You can think like the CUD (Create, Update, Delete) of REST.
+  # 
+
+# Subscriptions — They are the way you’re going to maintain a real-time connection with a server. That means that whenever an event occurs in the server and whenever that event is called, the server will send the corresponding data to the client.
+# By working with subscriptions, you can keep your app updated to the latest changes between different users.
+
+# ==============================================================================================================
+# SCHEMA
+
+# GraphQL has its own type of language that’s used to write schemas. This is a human-readable schema syntax called Schema Definition Language(SDL). The SDL will be the same, no matter what technology you’re using — you can use this with any language or framework that you want.
+# This schema language its very helpful because it’s simple to understand what types your API is going to have.
+
+# ==============================================================================================================
+
+# TYPES
+
+# Types are one of the most important features of GraphQL. Types are custom objects that represent how your API is going to look. For example, if you’re building a social media application, your API should have types such as Posts, Users, Likes, Groups.
+# Types have fields, and these fields return a specific type of data. For example, we’re going to create a User type, we should have some name, email, and age fields. Type fields can be anything, and always return a type of data as Int, Float, String, Boolean, ID, a List of Object Types, or Custom Objects Types.
+
+# ==============================================================================================================
